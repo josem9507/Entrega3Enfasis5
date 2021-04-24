@@ -37,6 +37,16 @@ jobs:
     - run: npm i
     - run: npm run test
     - run: npm run build
+    - name: Zip the results
+      uses: papeloto/action-zip@v1
+      with:
+        files: dist/
+        dest: result.zip
+    - name: Publish artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: dist-artifact
+        path: result.zip
   publish-s3-artifact:
     needs: build
     runs-on: ubuntu-latest
@@ -48,4 +58,4 @@ jobs:
           aws_access_key_id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID}}
           aws_secret_access_key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY}}
           aws_s3_bucket_name: ${{ secrets.S3_BUCKET_NAME }}
-          source_path: 'dist/'
+          source_path: 'dist-artifact'
