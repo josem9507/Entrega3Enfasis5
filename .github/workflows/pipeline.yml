@@ -25,11 +25,9 @@ jobs:
   build:
     needs: sonarcloud
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14.x]
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -39,3 +37,18 @@ jobs:
     - run: npm i
     - run: npm run test
     - run: npm run build
+    - name: Zip the results
+      uses: papeloto/action-zip@v1
+      with:
+        files: dist/
+        dest: result.zip  
+  publish-s3-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Upload to S3 as artifact
+        uses: medlypharmacy/s3-artifacts-action@master
+        with:
+          aws_access_key_id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID}}
+          aws_secret_access_key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY}}
+          source_path: './result.zip'
