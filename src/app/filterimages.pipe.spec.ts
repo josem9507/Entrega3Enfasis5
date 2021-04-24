@@ -5,12 +5,7 @@ describe('FilterimagesPipe', () => {
   let pipe: FilterimagesPipe;
   let service: ImageService;
   const items = [];
-  
-  console.log()
-  console.log()
-  console.log()
-  console.log()
-  console.log()
+
 
   beforeAll(() => {
     pipe = new FilterimagesPipe();
@@ -20,14 +15,7 @@ describe('FilterimagesPipe', () => {
     });
   });
 
-  console.log()
-  console.log()
-  console.log()
-  console.log()
-  console.log()
-  console.log()
-  console.log()
-  console.log()
+  
 
   it('Debe crear la instancia del pipe', () => {
     expect(pipe).toBeTruthy();
