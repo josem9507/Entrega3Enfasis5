@@ -43,6 +43,7 @@ jobs:
         files: dist/
         dest: result.zip  
   publish-s3-artifact:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
