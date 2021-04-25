@@ -36,16 +36,11 @@ jobs:
     - run: npm i
     - run: npm run test
     - run: npm run build
-    - name: Zip the results
-      uses: papeloto/action-zip@v1
-      with:
-        files: dist/
-        dest: result.zip
     - name: Publish artifact
       uses: actions/upload-artifact@v2
       with:
         name: dist-artifact
-        path: result.zip
+        path: dist/
   publish-s3-artifact:
     needs: build
     runs-on: ubuntu-latest
