@@ -14,7 +14,15 @@ describe('FilterimagesPipe', () => {
       items.push(element);
     });
   });
-
+  
+  console.log()
+  console.log()
+  console.log()
+  console.log()
+  console.log()
+  console.log()
+  console.log()
+  console.log()
   
 
   it('Debe crear la instancia del pipe', () => {
@@ -40,4 +48,14 @@ describe('FilterimagesPipe', () => {
     const filteredResult = pipe.transform(items, 'nada');
     expect(filteredResult.length).toBe(0);
   });
+
+
+  console.log()
+  console.log()
+  console.log()
+  console.log()
+  console.log()
+  console.log()
+  console.log()
+  console.log()
 });
