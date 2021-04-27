@@ -16,6 +16,13 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: SonarCloud breaker
+      uses: jkumar19/sonar-build-breaker@3.0.0
+      with:
+        sonar_url: "https://sonarcloud.io"
+        sonar_branch: "main"
+        sonar_token: ${{ secrets.SONAR_TOKEN }}
+        project_key: ${{ secrets.SONAR_KEY }}
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
