@@ -17,12 +17,10 @@ jobs:
       with:
         fetch-depth: 0
     - name: SonarCloud Scan
-      uses: jkumar19/sonar-build-breaker@v1.0.0
-      with:
-        sonar_url: "https://sonarcloud.io/dashboard?id=josem9507_Entrega3Enfasis5"
-        sonar_branch: "main"
-        sonar_token: ${{ secrets.SONAR_TOKEN }}
-        project_key: ${{ secrets.SONAR_KEY }}
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build:
     needs: sonarcloud
     runs-on: ubuntu-latest
