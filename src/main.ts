@@ -30,6 +30,12 @@ console.log('code smell');
 console.log('code smell');
 console.log('code smell');
 console.log('code smell');
+console.log('code smell');
+console.log('code smell');
+console.log('code smell');
+console.log('code smell');
+console.log('code smell');
+console.log('code smell');
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
