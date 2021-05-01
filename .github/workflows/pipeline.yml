@@ -69,8 +69,13 @@ jobs:
           aws_s3_bucket_name: ${{ secrets.S3_BUCKET_NAME }}
           source_path: result.zip
   docker:
+    needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: dist-artifact
+          path: dist
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
